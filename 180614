@@ -1,0 +1,25 @@
+Use Text String to Trigger If/Else
+IE: If/Else dependent on if variable contains "XYZ"
+%%[ Var @Rep_Name, @TriggerString
+Set @TriggerString= "NY Rangers"
+Set @Rep_Name= Rep_Name
+if IndexOf(@Rep_Name,@TriggerString) > 0 then]%%
+New York Rangers<br><br>
+%%[else]%%
+Let's Go Rangers!<br>
+<br>
+%%Rep_Name%%<br>
+%%Rep_Title%%
+%%[endif]%%
+
+
+Using Variable Length to Drive Content
+IE: If/Else Dependent on if variable is blank
+%%Address1%%%%[var @Address2 set @Address2 = [Address2]]%%
+%%[if not length(Address2) < 1 then]%%%%Address2%% %%[else]%%%%[endif]%%
+
+
+Changing Date Format
+%%=Format(TIME_VARIABLE(), "MMMM d, yyyy")=%%
+IE: %%=Format(date(), "MMMM d, yyyy")=%%
+
