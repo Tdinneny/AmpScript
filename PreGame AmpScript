@@ -1,0 +1,56 @@
+%%[ 
+	set @militaryTimeHour = substring (tm_event_time,1,2)
+if @militaryTimeHour >= 18 then
+	set @subjectLine = "Tonight's Matchup: "
+else
+	set @subjectLine = "Today's Matchup: "
+endif
+ 	set @strTime = stringtodate(tm_event_time)
+ 	set @lenTime = Length (@strTime)
+	set @posOfSpace = Indexof (@strTime, " ") 	set @eventTime = substring (@strTime,@posOfSpace,@lenTime)
+	set @strPos = indexOf (@eventTime, ":00 PM")
+	if @strPos > 1 then
+		set @eventTime = Replace (@eventTime, ":00 PM", " PM")
+	endif
+	set @subjectLine = Concat (@subjectLine, tm_event_name_long, " at ",@eventTime)
+]%%
+%%=v(@subjectLine)=%%
+
+
+
+
+Get Ready for Knicks vs. Orlando Magic!
+
+See you at The Garden when the Knicks take on Orlando Magic. We look forward to seeing you and let’s go Knicks!
+
+
+
+%%[ 
+	set @subjectLine = Concat ("Get Ready for ", tm_event_name_long, "!")
+]%%
+%%=v(@subjectLine)=%%
+
+
+
+%%[ 
+	set @lenEventName = Length (tm_event_name_long)
+	set @opponent = substring (tm_event_name_long, 21, @lenEventName)
+	set @preHeader = Concat ("See you at The Garden when the Knicks take on ", @opponent, ". We look forward to seeing you and let’s go Knicks!")
+]%%
+%%=v(@preHeader)=%%
+
+
+
+New York Knicks vs. Orlando Magic
+set @lenEventName = Length (tm_event_name_long)
+set @opponent = substring (tm_event_name_long, 21, @lenMergeTag)
+
+
+
+
+%%[
+/* Build Moveable Ink Slug */
+/* The 30 below is the lenghth of the string of "https://www.msg.com/calendar/" that we need to pull out to get the mi_slug value we want */
+set @lenMergeTag = Length (Merge_Tag)
+set @miSlug = substring (Merge_Tag, 30, @lenMergeTag)
+]%%
